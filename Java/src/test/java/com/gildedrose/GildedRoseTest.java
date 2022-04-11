@@ -10,7 +10,7 @@ class GildedRoseTest {
     void foo() {
         GildedRose app = new GildedRose(new Item("foo", 0, 0));
         app.updateQuality();
-        assertEquals("fixme", app.items[0].name);
+        assertEquals("foo", app.items[0].name);
     }
 
 }
