@@ -16,11 +16,11 @@ class GildedRose {
 
     public void updateQuality() {
         for (Item item : items) {
-            updateItem(item,createItemUpdate(item));
+            updateItem(createItemUpdate(item));
         }
     }
 
-    private void updateItem(Item item, ItemUpdate itemUpdate) {
+    private void updateItem(ItemUpdate itemUpdate) {
         itemUpdate.updateQuality();
         itemUpdate.updateSellin();
         itemUpdate.updateExpired();
