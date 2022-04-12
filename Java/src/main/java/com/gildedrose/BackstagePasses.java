@@ -27,6 +27,8 @@ public class BackstagePasses implements ItemUpdate{
 
     @Override
     public void updateExpired() {
-        item.quality = MIN_QUALITY;
+        if(isExpired(item)){
+            item.quality = MIN_QUALITY;
+        }
     }
 }

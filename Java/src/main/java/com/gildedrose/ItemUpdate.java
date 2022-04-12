@@ -4,6 +4,7 @@ public interface ItemUpdate {
 
     int MIN_QUALITY = 0;
     int MAX_QUALITY = 50;
+    int EXPIRED_DAY = 0;
 
     void updateQuality();
     void updateSellin();
@@ -26,6 +27,6 @@ public interface ItemUpdate {
     }
 
     default boolean isExpired(Item item) {
-        return item.sellIn < MIN_QUALITY;
+        return item.sellIn < EXPIRED_DAY;
     }
 }

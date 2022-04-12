@@ -20,6 +20,8 @@ public class AgedBrie implements ItemUpdate{
 
     @Override
     public void updateExpired() {
-        incrementQuality(item);
+        if (isExpired(item)){
+            incrementQuality(item);
+        }
     }
 }

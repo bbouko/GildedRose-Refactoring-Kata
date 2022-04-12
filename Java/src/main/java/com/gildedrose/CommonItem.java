@@ -20,6 +20,8 @@ public class CommonItem implements ItemUpdate{
 
     @Override
     public void updateExpired() {
-        decreaseQuality(item);
+        if(isExpired(item)){
+            decreaseQuality(item);
+        }
     }
 }
