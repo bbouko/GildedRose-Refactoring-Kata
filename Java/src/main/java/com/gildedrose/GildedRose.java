@@ -28,19 +28,19 @@ class GildedRose {
 
     private void updateExpired(Item item) {
         if (isExpired(item)) {
-            if (!item.name.equals(AGED_BRIE)) {
-                if (!item.name.equals(BACKSTAGE_PASSES)) {
+            if (item.name.equals(AGED_BRIE)) {
+                if (item.quality < MAX_QUALITY) {
+                    item.quality = item.quality + 1;
+                }
+            } else {
+                if (item.name.equals(BACKSTAGE_PASSES)) {
+                    item.quality = MIN_QUALITY;
+                } else {
                     if (item.quality > MIN_QUALITY) {
                         if (!item.name.equals(LEGENDARY)) {
                             item.quality = item.quality - 1;
                         }
                     }
-                } else {
-                    item.quality = MIN_QUALITY;
-                }
-            } else {
-                if (item.quality < MAX_QUALITY) {
-                    item.quality = item.quality + 1;
                 }
             }
         }
@@ -58,13 +58,7 @@ class GildedRose {
     }
 
     private void updateQuality(Item item) {
-        if (!item.name.equals(AGED_BRIE) && !item.name.equals(BACKSTAGE_PASSES)) {
-            if (item.quality > MIN_QUALITY) {
-                if (!item.name.equals(LEGENDARY)) {
-                    item.quality = item.quality - 1;
-                }
-            }
-        } else {
+        if (item.name.equals(AGED_BRIE) || item.name.equals(BACKSTAGE_PASSES)) {
             if (item.quality < MAX_QUALITY) {
                 item.quality = item.quality + 1;
 
@@ -80,6 +74,12 @@ class GildedRose {
                             item.quality = item.quality + 1;
                         }
                     }
+                }
+            }
+        } else {
+            if (item.quality > MIN_QUALITY) {
+                if (!item.name.equals(LEGENDARY)) {
+                    item.quality = item.quality - 1;
                 }
             }
         }
