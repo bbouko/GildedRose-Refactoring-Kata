@@ -10,7 +10,7 @@ class GildedRose {
     public static final int MAX_QUALITY = 50;
     Item[] items;
 
-    public GildedRose(Item ... items) {
+    public GildedRose(Item... items) {
         this.items = items;
     }
 
@@ -29,18 +29,15 @@ class GildedRose {
     }
 
     private void updateExpired(Item item) {
-            if (item.name.equals(AGED_BRIE)) {
-                incrementQuality(item);
-            }
-            else if(item.name.equals(BACKSTAGE_PASSES)){
-                item.quality = MIN_QUALITY;
+        if (item.name.equals(AGED_BRIE)) {
+            incrementQuality(item);
+        } else if (item.name.equals(BACKSTAGE_PASSES)) {
+            item.quality = MIN_QUALITY;
 
-            }
-            else if (item.name.equals(LEGENDARY)){
-            }
-            else {
-                decreaseQuality(item);
-            }
+        } else if (item.name.equals(LEGENDARY)) {
+        } else {
+            decreaseQuality(item);
+        }
     }
 
     private boolean isExpired(Item item) {
@@ -48,8 +45,8 @@ class GildedRose {
     }
 
     private void updateSellIn(Item item) {
-        if(item.name.equals(LEGENDARY)) {}
-        else{
+        if (item.name.equals(LEGENDARY)) {
+        } else {
             item.sellIn = item.sellIn - 1;
         }
     }
@@ -57,29 +54,25 @@ class GildedRose {
     private void updateQuality(Item item) {
         if (item.name.equals(AGED_BRIE)) {
             incrementQuality(item);
-        }
-        else if(item.name.equals(BACKSTAGE_PASSES)){
+        } else if (item.name.equals(BACKSTAGE_PASSES)) {
             updateBackstagePassesQuality(item);
-        }
-        else if (item.name.equals(LEGENDARY)){
+        } else if (item.name.equals(LEGENDARY)) {
         }
         //standard Item
         else decreaseQuality(item);
     }
 
     private void updateBackstagePassesQuality(Item item) {
-        if (item.quality < MAX_QUALITY) {
+        incrementQuality(item);
 
-            item.quality = item.quality + 1;
-            if (item.sellIn < 11) {
-                incrementQuality(item);
-            }
-            if (item.sellIn < 6) {
-                incrementQuality(item);
-            }
+        if (item.sellIn < 11) {
+            incrementQuality(item);
         }
-    }
+        if (item.sellIn < 6) {
+            incrementQuality(item);
+        }
 
+    }
 
 
     private void decreaseQuality(Item item) {
@@ -87,6 +80,7 @@ class GildedRose {
             item.quality = item.quality - 1;
         }
     }
+
     private void incrementQuality(Item item) {
         if (item.quality < MAX_QUALITY) {
             item.quality = item.quality + 1;
