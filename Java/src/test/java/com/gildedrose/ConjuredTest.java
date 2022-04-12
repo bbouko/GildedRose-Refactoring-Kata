@@ -6,13 +6,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class ConjuredTest {
 
-    @Test
-    void increaseQualityNeverOver50(){
-        GildedRose app = new GildedRose(new Item("Conjured Mana Cake", 5, 50));
-        app.updateQuality();
-        assertEquals(app.items[0].quality, 50);
-        assertEquals(app.items[0].sellIn, 4);
-    }
 
     @Test
     void decreaseQualityNeverUnder0(){
@@ -29,6 +22,14 @@ public class ConjuredTest {
         assertEquals(app.items[0].quality, 10);
         assertEquals(app.items[0].sellIn, 4);
 
+    }
+
+    @Test
+    public void decreaseQualityTwiceAsFastAsNormalItemWhenSellByDateHasPassed(){
+        GildedRose app = new GildedRose(new Item("Conjured Mana Cake", 0, 10));
+        app.updateQuality();
+        assertEquals(app.items[0].quality, 6);
+        assertEquals(app.items[0].sellIn, -1);
     }
 
 

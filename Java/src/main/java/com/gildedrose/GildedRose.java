@@ -3,11 +3,11 @@ package com.gildedrose;
 
 class GildedRose {
 
-    public static final String AGED_BRIE = "Aged Brie";
-    public static final String BACKSTAGE_PASSES = "Backstage passes to a TAFKAL80ETC concert";
-    public static final String LEGENDARY = "Sulfuras, Hand of Ragnaros";
+    private static final String AGED_BRIE = "Aged Brie";
+    private static final String BACKSTAGE_PASSES = "Backstage passes to a TAFKAL80ETC concert";
+    private static final String LEGENDARY = "Sulfuras, Hand of Ragnaros";
+    private static final String CONJURED = "Conjured Mana Cake";
 
-    public static final int MIN_QUALITY  = 0;
     Item[] items;
 
     public GildedRose(Item... items) {
@@ -23,13 +23,8 @@ class GildedRose {
     private void updateItem(Item item, ItemUpdate itemUpdate) {
         itemUpdate.updateQuality();
         itemUpdate.updateSellin();
-        if (isExpired(item)) {
-            itemUpdate.updateExpired();
-        }
-    }
+        itemUpdate.updateExpired();
 
-    private boolean isExpired(Item item) {
-        return item.sellIn < MIN_QUALITY;
     }
 
     private ItemUpdate createItemUpdate(Item item){
@@ -40,6 +35,8 @@ class GildedRose {
                 return new AgedBrie(item);
             case BACKSTAGE_PASSES:
                 return new BackstagePasses(item);
+            case CONJURED:
+                return new ConjuredItem(item);
             default:
                 return new CommonItem(item);
 
