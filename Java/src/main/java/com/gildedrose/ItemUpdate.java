@@ -2,17 +2,12 @@ package com.gildedrose;
 
 public interface ItemUpdate {
 
-    public static final int MIN_QUALITY = 0;
-    public static final int MAX_QUALITY = 50;
+    int MIN_QUALITY = 0;
+    int MAX_QUALITY = 50;
 
-    void updateItem();
     void updateQuality();
     void updateSellin();
     void updateExpired();
-
-    public Item getItem();
-
-
 
     default void decreaseQuality(Item item) {
         if (item.quality > MIN_QUALITY) {
@@ -28,5 +23,9 @@ public interface ItemUpdate {
 
     default void decreaseSellin(Item item){
         item.sellIn = item.sellIn - 1;
+    }
+
+    default boolean isExpired(Item item) {
+        return item.sellIn < MIN_QUALITY;
     }
 }

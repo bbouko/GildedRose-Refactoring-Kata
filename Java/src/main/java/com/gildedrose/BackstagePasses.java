@@ -2,20 +2,10 @@ package com.gildedrose;
 
 public class BackstagePasses implements ItemUpdate{
 
-    public Item getItem() {
-        return item;
-    }
-
     private final Item item;
 
     public BackstagePasses(Item item) {
         this.item = item;
-    }
-
-
-    @Override
-    public void updateItem() {
-
     }
 
     @Override
@@ -27,7 +17,6 @@ public class BackstagePasses implements ItemUpdate{
         if (item.sellIn < 6) {
             incrementQuality(item);
         }
-
     }
 
     @Override
@@ -38,6 +27,6 @@ public class BackstagePasses implements ItemUpdate{
 
     @Override
     public void updateExpired() {
-
+        item.quality = MIN_QUALITY;
     }
 }
