@@ -32,6 +32,7 @@ public class BackstagePasses implements ItemUpdate{
 
     @Override
     public void updateSellin() {
+        decreaseSellin(item);
 
     }
 

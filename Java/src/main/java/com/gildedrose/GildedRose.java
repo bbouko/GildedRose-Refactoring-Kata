@@ -26,7 +26,8 @@ class GildedRose {
     private void updateItem(Item item, ItemUpdate itemUpdate) {
         //updateQuality(itemUpdate.getItem());
         itemUpdate.updateQuality();
-        updateSellIn(itemUpdate.getItem());
+        //updateSellIn(itemUpdate.getItem());
+        itemUpdate.updateSellin();
         if (isExpired(itemUpdate.getItem())) {
             updateExpired(itemUpdate.getItem());
         }

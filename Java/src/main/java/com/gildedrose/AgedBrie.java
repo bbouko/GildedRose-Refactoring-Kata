@@ -23,11 +23,12 @@ public class AgedBrie implements ItemUpdate{
 
     @Override
     public void updateSellin() {
-
+        decreaseSellin(item);
     }
 
     @Override
     public void updateExpired() {
+
 
     }
 }

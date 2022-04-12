@@ -25,4 +25,8 @@ public interface ItemUpdate {
             item.quality = item.quality + 1;
         }
     }
+
+    default void decreaseSellin(Item item){
+        item.sellIn = item.sellIn - 1;
+    }
 }
