@@ -23,27 +23,26 @@ class GildedRose {
     private void updateItemQuality(Item item) {
         updateQuality(item);
         updateSellIn(item);
-        updateExpired(item);
+        if (isExpired(item)) {
+            updateExpired(item);
+        }
     }
 
     private void updateExpired(Item item) {
-        if (isExpired(item)) {
             if (item.name.equals(AGED_BRIE)) {
                 if (item.quality < MAX_QUALITY) {
                     item.quality = item.quality + 1;
                 }
-            } else {
-                if (item.name.equals(BACKSTAGE_PASSES)) {
-                    item.quality = MIN_QUALITY;
-                } else {
-                    if (item.quality > MIN_QUALITY) {
-                        if (!item.name.equals(LEGENDARY)) {
-                            item.quality = item.quality - 1;
-                        }
-                    }
-                }
             }
-        }
+            else if(item.name.equals(BACKSTAGE_PASSES)){
+                item.quality = MIN_QUALITY;
+
+            }
+            else if (item.name.equals(LEGENDARY)){
+            }
+            else if (item.quality > MIN_QUALITY) {
+                item.quality = item.quality - 1;
+            }
     }
 
     private boolean isExpired(Item item) {
