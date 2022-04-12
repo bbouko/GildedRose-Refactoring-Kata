@@ -51,9 +51,9 @@ class GildedRose {
     }
 
     private void updateSellIn(Item item) {
-        if (!item.name.equals(LEGENDARY)) {
+        if(item.name.equals(LEGENDARY)) {}
+        else{
             item.sellIn = item.sellIn - 1;
-
         }
     }
 
@@ -66,13 +66,11 @@ class GildedRose {
         else if(item.name.equals(BACKSTAGE_PASSES)){
             updateBackstagePasses(item);
         }
-
-        else {
-            if (item.quality > MIN_QUALITY) {
-                if (!item.name.equals(LEGENDARY)) {
-                    item.quality = item.quality - 1;
-                }
-            }
+        else if (item.name.equals(LEGENDARY)){
+        }
+        //standard Item
+        else if(item.quality > MIN_QUALITY) {
+                item.quality = item.quality - 1;
         }
     }
 
