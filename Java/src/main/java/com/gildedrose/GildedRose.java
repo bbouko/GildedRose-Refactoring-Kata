@@ -38,15 +38,9 @@ class GildedRose {
             }
             else if (item.name.equals(LEGENDARY)){
             }
-            else if (item.quality > MIN_QUALITY) {
-                item.quality = item.quality - 1;
+            else {
+                decreaseQuality(item);
             }
-    }
-
-    private void incrementQuality(Item item) {
-        if (item.quality < MAX_QUALITY) {
-            item.quality = item.quality + 1;
-        }
     }
 
     private boolean isExpired(Item item) {
@@ -70,9 +64,7 @@ class GildedRose {
         else if (item.name.equals(LEGENDARY)){
         }
         //standard Item
-        else if(item.quality > MIN_QUALITY) {
-                item.quality = item.quality - 1;
-        }
+        else decreaseQuality(item);
     }
 
     private void updateBackstagePassesQuality(Item item) {
@@ -85,6 +77,19 @@ class GildedRose {
             if (item.sellIn < 6) {
                 incrementQuality(item);
             }
+        }
+    }
+
+
+
+    private void decreaseQuality(Item item) {
+        if (item.quality > MIN_QUALITY) {
+            item.quality = item.quality - 1;
+        }
+    }
+    private void incrementQuality(Item item) {
+        if (item.quality < MAX_QUALITY) {
+            item.quality = item.quality + 1;
         }
     }
 
