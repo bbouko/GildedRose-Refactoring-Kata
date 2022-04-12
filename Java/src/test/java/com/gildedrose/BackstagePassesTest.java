@@ -28,6 +28,13 @@ public class BackstagePassesTest {
         assertEquals(app.items[0].quality, 6);
         assertEquals(app.items[0].sellIn, 4);
     }
+    @Test
+    void qualityNeverOver50(){
+        GildedRose app = new GildedRose(new Item("Backstage passes to a TAFKAL80ETC concert", 5, 50));
+        app.updateQuality();
+        assertEquals(app.items[0].quality, 50);
+        assertEquals(app.items[0].sellIn, 4);
+    }
 
     @Test
     public void qualityDropTo0WhenSellByDateIsOver(){
